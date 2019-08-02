@@ -6,6 +6,8 @@ export 'src/app.dart';
 export 'src/theme.dart';
 export 'src/app_bar.dart';
 export 'src/bottom_navigation_bar.dart';
+export 'src/clip.dart';
+export 'src/icons.dart';
 
 /// A Calculator.
 class Calculator {

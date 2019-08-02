@@ -15,16 +15,15 @@ class AppBar extends StatelessWidget {
 
     final double _kToolBarHeight = MediaQuery.of(context).padding.top;
 
-    print(Theme.of(context).name);
-
     return Container(
       height: 56,
       margin: EdgeInsets.only(top: _kToolBarHeight),
       decoration: BoxDecoration(
+        color: Theme.of(context).primaryColor,
         border: Border(
           bottom: BorderSide(
             width: 1.0,
-            color: Color(0xFFFF0000),
+            color: Color(0xFFFEFEFE),
           ),
         ),
       ),
@@ -32,7 +31,19 @@ class AppBar extends StatelessWidget {
         direction: Axis.horizontal,
         children: <Widget>[
           Container(child: left),
-          Expanded(child: Center(child: title)),
+          Expanded(
+            child: DefaultTextStyle(
+              // TODO default textStyle
+              style: TextStyle(
+                color: Color(0xFFFF0000),
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+              ),
+              child: Center(
+                child: title,
+              ),
+            ),
+          ),
           Container(child: right),
         ],
       ),

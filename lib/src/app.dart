@@ -1,28 +1,36 @@
 import 'dart:ui' as ui;
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/widgets.dart' hide Route;
 
 import 'theme.dart';
+import 'route.dart';
 import 'app_bar.dart';
 import 'bottom_navigation_bar.dart';
 
 class AntdApp extends StatefulWidget {
   AntdApp({
     Key key,
+    this.navigatorKey,
+    this.home,
+    this.routes,
     this.appBar,
     this.body,
     this.bottomNavigationBar,
   });
+
+  final GlobalKey<NavigatorState> navigatorKey;
+  final Widget home;
+  final List<Route> routes;
 
   final AppBar appBar;
   final Widget body;
   final BottomNavigationBar bottomNavigationBar;
 
   @override
-  _AntdState createState() => _AntdState();
+  _AntdAppState createState() => _AntdAppState();
 }
 
-class _AntdState extends State<AntdApp> {
+class _AntdAppState extends State<AntdApp> {
   @override
   Widget build(BuildContext context) {
     return MediaQuery(
@@ -54,18 +62,18 @@ class _AntdAppTheme extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-            textDirection: TextDirection.ltr,
-            child: Container(
-              color: Color(0xFFF5F5F5),
-              child: Flex(
-                direction: Axis.vertical,
-                children: <Widget>[
-                  Container(child: appBar),
-                  Expanded(child: body),
-                  Container(child: bottomNavigationBar),
-                ],
-              ),
-            ),
-          );
+      textDirection: TextDirection.ltr,
+      child: Container(
+        color: Color(0xFFF5F5F5),
+        child: Flex(
+          direction: Axis.vertical,
+          children: <Widget>[
+            Container(child: appBar ?? Container()),
+            Expanded(child: body),
+            Container(child: bottomNavigationBar ?? Container()),
+          ],
+        ),
+      ),
+    );
   }
 }

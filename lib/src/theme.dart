@@ -8,11 +8,11 @@ class Theme extends StatelessWidget {
   });
 
   final ThemeData data;
-
   final Widget child;
 
   static ThemeData of(BuildContext context) {
-    final _InheritedTheme inheritedTheme = context.inheritFromWidgetOfExactType(_InheritedTheme);
+    final _InheritedTheme inheritedTheme =
+        context.inheritFromWidgetOfExactType(_InheritedTheme);
 
     return inheritedTheme.theme.data;
   }
@@ -33,7 +33,8 @@ class _InheritedTheme extends InheritedWidget {
     Key key,
     this.theme,
     @required Widget child,
-  }) : assert(theme != null), super(key: key, child: child);
+  })  : assert(theme != null),
+        super(key: key, child: child);
 
   final Theme theme;
 
@@ -42,7 +43,6 @@ class _InheritedTheme extends InheritedWidget {
 }
 
 class ThemeData {
-  // TODO
   ThemeData({
     this.name,
     this.primaryColor = const Color(0xFF1890FF),
